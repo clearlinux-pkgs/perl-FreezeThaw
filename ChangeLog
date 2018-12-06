@@ -1,40 +1,148 @@
-Version 0.2:
-	The frozen info starts with 'FrT;'. Warning if not - nonfatal.
-	Results of freezeEmpty are cached, explanation about caching
-FreezeEmpty added.
-	At last, all the tests are OK.
-	Little bit more compact backreferences.
-Version 0.2:
-	New tests added and work.
-	"Repeated" handled much cleaner now (basing on $secondpass).
-	Packages are stored in a more compact form.
-	Numbers are stored in a more compact form.
-Version 0.4:
-	Can handle overloaded objects.
-Version 0.41:
-	Bug in detecting duplicated overloaded objects fixed.
-	(When Reissued:)
-	Remove wrong comments on faking out tests in t/*.
-	Add a POD section on limitations.
-Version 0.42:
-	Fix test for a change of string representation of Math::BigInt.
-	Support qr// objects (via UNIVERSAL, so if Regexp supports
-		(de)serialization methods, they will be used instead).
-	`use strict'-complient.
-Version 0.43:
-	Correct save/restore of overloaded values, including repeated refs.
-Version 0.44:
-	Optimize thaw; apparently, with 5.8.8 \G in REx is not optimized;
-	  so implement along lines suggested by Bram [wizbit] (about 5x speedup
-          in some test cases).
-Version 0.45:
-	Maxpointer decimal width was wrongly calculated on 64bit machines with
-	  narrow NVs.
-Version 0.5
-	Support RExes of 5.11 and later (XXXX but not yet reblessed ones...)
-		(prototype by Andreas Koenig)
-Version 0.5001
-	Switch to a course version-check to recognize that regexps are
-		first-level (otherwise would need to rely on Scalar::Utils).
-		(Tested to work with 5.8, 5.10, 5.11.)
+libfreezethaw-perl (0.5001-2) unstable; urgency=medium
 
+  * Team upload
+
+  [ Ansgar Burchardt ]
+  * debian/control: Convert Vcs-* fields to Git.
+
+  [ Salvatore Bonaccorso ]
+  * debian/copyright: Replace DEP5 Format-Specification URL from
+    svn.debian.org to anonscm.debian.org URL.
+  * Change Vcs-Git to canonical URI (git://anonscm.debian.org)
+  * Change search.cpan.org based URIs to metacpan.org based URIs
+
+  [ Axel Beckert ]
+  * debian/copyright: migrate pre-1.0 format to 1.0 using "cme fix dpkg-
+    copyright"
+
+  [ gregor herrmann ]
+  * Strip trailing slash from metacpan URLs.
+
+  [ Salvatore Bonaccorso ]
+  * Update Vcs-Browser URL to cgit web frontend
+  * debian/control: Use HTTPS transport protocol for Vcs-Git URI
+
+  [ gregor herrmann ]
+  * debian/copyright: change Copyright-Format 1.0 URL to HTTPS.
+  * Remove Jonathan Yu from Uploaders. Thanks for your work!
+  * Remove Rene Mayorga from Uploaders. Thanks for your work!
+
+  [ Salvatore Bonaccorso ]
+  * Update Vcs-* headers for switch to salsa.debian.org
+
+  [ Florian Schlichting ]
+  * Update license paragraphs to commonly used versions
+  * Bump dh compat to level 11
+  * Declare compliance with Debian Policy 4.1.4
+  * Add to and forward fix-pod-spelling.patch
+
+ -- Florian Schlichting <fsfs@debian.org>  Fri, 29 Jun 2018 22:33:56 +0200
+
+libfreezethaw-perl (0.5001-1) unstable; urgency=low
+
+  [ Jonathan Yu ]
+  * New upstream release
+  * Minor update to copyright information
+
+  [ gregor herrmann ]
+  * debian/watch: add a uversionmangle in case upstream goes back to two-digt
+    minor versions.
+
+ -- Jonathan Yu <jawnsy@cpan.org>  Tue, 06 Apr 2010 16:09:49 -0400
+
+libfreezethaw-perl (0.50-1) unstable; urgency=low
+
+  [ Jonathan Yu ]
+  * New upstream release
+  * Standards-Version 3.8.4 (no changes)
+  * Use new short debhelper rules format
+  * Add myself to Uploaders and Copyright
+  * Rewrite control description
+  * Use new 3.0 (quilt) source format
+  * Add a patch to fix POD spelling problems
+
+  [ Nathan Handler ]
+  * debian/watch: Update to ignore development releases.
+
+  [ gregor herrmann ]
+  * Change my email address.
+
+  [ Franck Joncourt ]
+  * Refreshed d.copyright to follow DEP5 guideline.
+  * Added perl as BDI.
+
+ -- Jonathan Yu <jawnsy@cpan.org>  Tue, 09 Mar 2010 21:21:12 -0500
+
+libfreezethaw-perl (0.45-1) unstable; urgency=low
+
+  [ gregor herrmann ]
+  * debian/control: Changed: Switched Vcs-Browser field to ViewSVN
+    (source stanza).
+  * debian/control: Added: ${misc:Depends} to Depends: field.
+
+  [ Rene Mayorga ]
+  * New upstream release
+  * debian/control:
+    + raise debhelper versioned depends to 7
+    + add myself to uploaders
+    + change gregor's email address
+    + bump Standards-Version to 3.8.0 (no changes needed)
+    + mention module name on extended description
+  * debian/rules: use dh7 tiny format based on dh-make-perl -R
+  * debian/copyright:
+    + use the new proposal format
+    + mention debian/* copyright holders based on debian/changelog
+
+ -- Rene Mayorga <rmayorga@debian.org>  Thu, 19 Feb 2009 23:30:23 -0600
+
+libfreezethaw-perl (0.43-4) unstable; urgency=low
+
+  * debian/control: Added: Vcs-Svn field (source stanza); Vcs-Browser
+    field (source stanza); Homepage field (source stanza). Removed: XS-
+    Vcs-Svn fields.
+  * debian/watch: use dist-based URL.
+  * debian/rules:
+    - delete /usr/lib/perl5 only if it exists (closes: #468025)
+    - update based on dh-make-perl's templates
+    - don't install README any more (contains only a copyright notice which
+      is in debian/copyright anyway)
+  * Set Standards-Version to 3.7.3 (no changes).
+  * debian/copyright: add upstream source location.
+
+ -- gregor herrmann <gregor+debian@comodo.priv.at>  Sat, 08 Mar 2008 14:39:31 +0100
+
+libfreezethaw-perl (0.43-3) unstable; urgency=low
+
+  * Move package to the Debian Perl Group (closes: #376033).
+  * Update Standards-Version, Debhelper compatibility level, FSF address, ... to
+    values suitable for mid 2006.
+  * Add watch file, remove empty /usr/lib/perl5 directory, enable tests in debian/rules, ...
+
+ -- gregor herrmann <gregor+debian@comodo.priv.at>  Fri, 14 Jul 2006 23:10:00 +0200
+
+libfreezethaw-perl (0.43-2) unstable; urgency=low
+
+  * update debian/rules to current dh-make-perl rules.noxs template.
+    This should fix the spurious .packlist bug (closes: Bug#163579)
+
+ -- Ivan Kohler <ivan-debian@420.am>  Mon,  7 Oct 2002 20:53:43 -0700
+
+libfreezethaw-perl (0.43-1) unstable; urgency=low
+
+  * new upstream release
+  * binary-arch vs. binary-indep (closes: Bug#153356)
+  * debian/copyright pedantry (closes: Bug#153381)
+
+ -- Ivan Kohler <ivan-debian@420.am>  Sat,  7 Sep 2002 06:44:37 -0700
+
+libfreezethaw-perl (0.41-2) unstable; urgency=low
+
+  * Removed gratuitous dh_suidregister
+
+ -- Ivan Kohler <ivan-debian@420.am>  Fri, 16 Feb 2001 03:20:42 -0800
+
+libfreezethaw-perl (0.41-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Ivan Kohler <ivan-debian@420.am>  Fri,  2 Feb 2001 13:48:29 -0800
