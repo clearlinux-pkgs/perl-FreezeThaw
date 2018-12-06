@@ -4,7 +4,7 @@
 #
 Name     : perl-FreezeThaw
 Version  : 1
-Release  : 4
+Release  : 5
 URL      : https://cpan.metacpan.org/authors/id/I/IL/ILYAZ/modules/etext/etext.1.6.3.zip
 Source0  : https://cpan.metacpan.org/authors/id/I/IL/ILYAZ/modules/etext/etext.1.6.3.zip
 Source1  : http://http.debian.net/debian/pool/main/libf/libfreezethaw-perl/libfreezethaw-perl_0.5001-2.debian.tar.xz
