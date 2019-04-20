@@ -4,11 +4,11 @@
 #
 Name     : perl-FreezeThaw
 Version  : 0.5001
-Release  : 7
+Release  : 8
 URL      : https://cpan.metacpan.org/authors/id/I/IL/ILYAZ/modules/FreezeThaw-0.5001.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IL/ILYAZ/modules/FreezeThaw-0.5001.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libf/libfreezethaw-perl/libfreezethaw-perl_0.5001-2.debian.tar.xz
-Summary  : ~
+Summary  : Convert arbitrary objects to/from strings
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
 Requires: perl-FreezeThaw-license = %{version}-%{release}
@@ -22,6 +22,7 @@ modify it under the same terms as Perl itself.
 Summary: dev components for the perl-FreezeThaw package.
 Group: Development
 Provides: perl-FreezeThaw-devel = %{version}-%{release}
+Requires: perl-FreezeThaw = %{version}-%{release}
 
 %description dev
 dev components for the perl-FreezeThaw package.
