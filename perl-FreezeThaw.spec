@@ -4,14 +4,15 @@
 #
 Name     : perl-FreezeThaw
 Version  : 0.5001
-Release  : 10
+Release  : 11
 URL      : https://cpan.metacpan.org/authors/id/I/IL/ILYAZ/modules/FreezeThaw-0.5001.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IL/ILYAZ/modules/FreezeThaw-0.5001.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libf/libfreezethaw-perl/libfreezethaw-perl_0.5001-2.debian.tar.xz
-Summary  : Convert arbitrary objects to/from strings
+Summary  : ~
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
 Requires: perl-FreezeThaw-license = %{version}-%{release}
+Requires: perl-FreezeThaw-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -36,18 +37,28 @@ Group: Default
 license components for the perl-FreezeThaw package.
 
 
+%package perl
+Summary: perl components for the perl-FreezeThaw package.
+Group: Default
+Requires: perl-FreezeThaw = %{version}-%{release}
+
+%description perl
+perl components for the perl-FreezeThaw package.
+
+
 %prep
 %setup -q -n FreezeThaw-0.5001
-cd ..
-%setup -q -T -D -n FreezeThaw-0.5001 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libfreezethaw-perl_0.5001-2.debian.tar.xz
+cd %{_builddir}/FreezeThaw-0.5001
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/FreezeThaw-0.5001/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/FreezeThaw-0.5001/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -57,7 +68,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -66,7 +77,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-FreezeThaw
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-FreezeThaw/deblicense_copyright
+cp %{_builddir}/FreezeThaw-0.5001/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-FreezeThaw/9b762f1c99b2ef4648cc70f29b95b950521a90e5
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -79,7 +90,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/FreezeThaw.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -87,4 +97,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-FreezeThaw/deblicense_copyright
+/usr/share/package-licenses/perl-FreezeThaw/9b762f1c99b2ef4648cc70f29b95b950521a90e5
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/FreezeThaw.pm
