@@ -4,7 +4,7 @@
 #
 Name     : perl-FreezeThaw
 Version  : 0.5001
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/I/IL/ILYAZ/modules/FreezeThaw-0.5001.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/I/IL/ILYAZ/modules/FreezeThaw-0.5001.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libf/libfreezethaw-perl/libfreezethaw-perl_0.5001-2.debian.tar.xz
@@ -101,4 +101,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.2/FreezeThaw.pm
+/usr/lib/perl5/vendor_perl/5.30.3/FreezeThaw.pm
